@@ -1,6 +1,7 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding-bottom: 70px;
 }
 
 a {
@@ -28,4 +29,10 @@ a {
 .navbar-fixed-left .navbar-nav > li > .dropdown-menu {
   margin-top: -50px;
   margin-left: 140px;
+}
+
+#footer {
+  color: white;
+  text-align: center;
+  
 }
