@@ -28,6 +28,8 @@ app.use(cookieSession({
   keys: [process.env.SESSION_KEY]
 }));
 
+// http://localhost:3000/auth/linkedIn/callback
+
 passport.use(new LinkedInStrategy({
   clientID: process.env.LINKEDIN_CLIENT_ID,
   clientSecret: process.env.LINKEDIN_CLIENT_SECRET,
@@ -36,20 +38,20 @@ passport.use(new LinkedInStrategy({
    state: true
 }, function(accessToken, refreshToken, profile, done) {
   done(null, {id: profile.id, displayName: profile.displayName})
-  // process.nextTick(function () {
-  //   // To keep the example simple, the user's LinkedIn profile is returned to
-  //   // represent the logged-in user. In a typical application, you would want
-  //   // to associate the LinkedIn account with a user record in your database,
-  //   // and return that user instead.
-  //   return done(null, profile);
-  // });
+  process.nextTick(function () {
+    // To keep the example simple, the user's LinkedIn profile is returned to
+    // represent the logged-in user. In a typical application, you would want
+    // to associate the LinkedIn account with a user record in your database,
+    // and return that user instead.
+    return done(null, profile);
+  });
 }));
 app.get('/auth/linkedin',
   passport.authenticate('linkedin',
   function(req, res){
     // The request will be redirected to LinkedIn for authentication, so this
     // function will not be called.
-  });
+  }));
   app.get('/auth/linkedin/callback', passport.authenticate('linkedin', {
   successRedirect: '/',
   failureRedirect: '/login'
@@ -63,6 +65,11 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(user, done) {
   done(null, user)
 });
+
+app.use(function (req, res, next) {
+  res.locals.user = req.user
+  next()
+})
 
 app.use('/', routes);
 
@@ -81,6 +88,7 @@ app.use(function(req, res, next) {
 // will print stacktrace
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
+    console.log(err.status)
     res.status(err.status || 500);
     res.send('error', {
       message: err.message,
