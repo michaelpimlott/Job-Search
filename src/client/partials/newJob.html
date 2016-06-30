@@ -1,5 +1,5 @@
 <form ng-submit="#">
-    <h3>New application</h3>
+    <h3>New Application</h3>
     <div class="input-group">
       <span class="input-group-addon" id="basic-addon1">Company</span>
       <input type="text" class="form-control" placeholder="Company Name">
@@ -16,7 +16,7 @@
   <div class="row">
       <div class='col-sm-6'>
           <div class="form-group">
-              <div class='input-group date' id='datetimepicker1'>
+              <div  class='input-group date' id='datetimepicker1'>
                   <input type='text' class="form-control" />
                   <span class="input-group-addon">Application Date
                       <span class="glyphicon glyphicon-calendar"></span>
@@ -31,19 +31,22 @@
       <span class="input-group-addon" id="basic-addon1">Listing Url</span>
       <input type="text" class="form-control" placeholder="www.mcdonaldscareers.com">
     </div>
+    <br>
     <div class="input-group">
       <span class="input-group-addon" id="basic-addon1">Listing Source</span>
       <input type="text" class="form-control" placeholder="Monster.com">
     </div>
+    <br>
     <div class="input-group">
       <span class="input-group-addon" id="basic-addon1">Status</span>
       <input type="text" class="form-control" placeholder="Waiting for call">
     </div>
+    <br>
     <div class="container">
   <div class="row">
       <div class='col-sm-6'>
           <div class="form-group">
-              <div class='input-group date' id='datetimepicker1'>
+              <div  class='input-group date' id='datetimepicker1'>
                   <input type='text' class="form-control" />
                   <span class="input-group-addon">Informational Interview Date
                       <span class="glyphicon glyphicon-calendar"></span>
@@ -100,7 +103,7 @@
   <div class="row">
       <div class='col-sm-6'>
           <div class="form-group">
-              <div class='input-group date' id='datetimepicker1'>
+              <div  class='input-group date' id='datetimepicker1'>
                   <input type='text' class="form-control" />
                   <span class="input-group-addon">On-Site Interview Date
                       <span class="glyphicon glyphicon-calendar"></span>
@@ -119,7 +122,7 @@
 <div class="row">
 <div class='col-sm-6'>
     <div class="form-group">
-        <div class='input-group date' id='datetimepicker1'>
+        <div  class='input-group date' id='datetimepicker1'>
             <input type='text' class="form-control" />
             <span class="input-group-addon">Take Home Interview date
                 <span class="glyphicon glyphicon-calendar"></span>
@@ -138,37 +141,44 @@
       <span class="input-group-addon" id="basic-addon1">Offer</span>
       <input type="text" class="form-control" placeholder="$">
     </div>
+    <br>
     <div class="input-group">
       <span class="input-group-addon" id="basic-addon1">Rejected</span>
       <input type="text" class="form-control" placeholder=":(">
     </div>
-    <div class="input-group">
-      <span class="input-group-addon" id="basic-addon1">Notes</span>
-      <input type="text" class="form-control" placeholder="Something here">
-    </div>
+    <fieldset class="form-group">
+   <label for="Textarea">Notes</label>
+   <textarea class="form-control" id="NotesTextarea" rows="4"></textarea>
+ </fieldset>
     <div class="input-group">
       <span class="input-group-addon" id="basic-addon1">Resume</span>
       <input type="text" class="form-control" placeholder="Resume">
     </div>
+    <br>
+    <div>
     <label class="btn btn-default btn-file">
   Browse <input type="file" style="display: none;">
   </label>
   <label class="btn btn-primary" for="my-file-selector">
   <input id="my-file-selector" type="file" style="display:none;" onchange="$('#upload-file-info').html($(this).val());">
-  Button Text Here
+  <i class="fa fa-paperclip" aria-hidden="true"></i> Attach Resume
 </label>
+</div>
+<br>
 <span class='label label-info' id="upload-file-info"></span>
     <div class="input-group">
       <span class="input-group-addon" id="basic-addon1">Cover Letter</span>
       <input type="text" class="form-control" placeholder="Letter">
     </div>
+    <br>
     <div class="input-group">
       <span class="input-group-addon" id="basic-addon1">Company Webstite</span>
       <input type="text" class="form-control" placeholder="www.mcdonalds.com">
     </div>
-    <div class="input-group">
-      <span class="input-group-addon" id="basic-addon1">Company Technology Notes</span>
-      <input type="text" class="form-control" placeholder="C#">
-    </div>
+    <br>
+    <fieldset class="form-group">
+   <label for="Textarea">Company Technology Notes</label>
+   <textarea class="form-control" id="NotesTextarea" rows="4"></textarea>
+ </fieldset>
 
   </form>

@@ -36,3 +36,8 @@ a {
   text-align: center;
 
 }
+
+#datetimepicker1{
+  width: 750px;
+  right: 15px ;
+}
