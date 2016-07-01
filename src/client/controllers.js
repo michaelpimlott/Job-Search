@@ -26,6 +26,12 @@ myApp.controller('LoginController', [
       function($scope){
         $scope.view = {};
         $scope.view.test = 'New whatever you want.';
+        $scope.view.submitForm = function(isValid) {
+          if (isValid) {
+      alert('our form is amazing');
+    }
+
+  };
       }]);
       myApp.controller('ShowController', [
         '$scope',

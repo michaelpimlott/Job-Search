@@ -1,17 +1,24 @@
-<form ng-submit="#">
+
+<form name="newAp" ng-submit="submitForm(newAp.$valid)" novalidate>
     <h3>New Application</h3>
-    <div class="input-group">
-      <span class="input-group-addon" id="basic-addon1">Company</span>
-      <input type="text" class="form-control" placeholder="Company Name">
+    <div class="form-group" ng-class="{ 'has-error' : newAp.companyName.$invalid && !newAp.companyName.$pristine }">
+      <label>Company</label>
+      <input type="text" name="companyName" class="form-control" ng-model="companyName" required>
+      <p ng-show="newAp.companyName.$invalid && !newAp.companyName.$pristine" class="help-block">Company name is required.</p>
     </div>
-    <div class="input-group">
-      <span class="input-group-addon" id="basic-addon1">Title</span>
-      <input type="text" class="form-control" placeholder="Job Title">
+
+    <div class="form-group" ng-class="{ 'has-error' : newAp.jobTitle.$invalid && !newAp.jobTitle.$pristine }">
+      <label>Job Title</label>
+      <input type="text" name="jobTitle" class="form-control" ng-model="jobTitle" required>
+      <p ng-show="newAp.jobTitle.$invalid && !newAp.jobTitle.$pristine" class="help-block">Job title is required.</p>
     </div>
-    <div class="input-group">
-      <span class="input-group-addon" id="basic-addon1">Current Status</span>
-      <input type="text" class="form-control" placeholder="Status">
-    </div>
+    <fieldset class="form-group">
+      <label for="status">Status</label>
+      <select multiple class="form-control" id="status">
+        <option>Active</option>
+        <option>Inactive</option>
+      </select>
+    </fieldset>
     <div class="container">
   <div class="row">
       <div class='col-sm-6'>
@@ -27,21 +34,17 @@
 
   </div>
 </div>
-    <div class="input-group">
-      <span class="input-group-addon" id="basic-addon1">Listing Url</span>
-      <input type="text" class="form-control" placeholder="www.mcdonaldscareers.com">
-    </div>
-    <br>
-    <div class="input-group">
-      <span class="input-group-addon" id="basic-addon1">Listing Source</span>
-      <input type="text" class="form-control" placeholder="Monster.com">
-    </div>
-    <br>
-    <div class="input-group">
-      <span class="input-group-addon" id="basic-addon1">Status</span>
-      <input type="text" class="form-control" placeholder="Waiting for call">
-    </div>
-    <br>
+<div class="form-group" ng-class="{ 'has-error' : newAp.listingUrl.$invalid && !newAp.listingUrl.$pristine }">
+  <label>Listing URL</label>
+  <input type="text" name="listingUrl" class="form-control" ng-model="listingUrl">
+  <p ng-show="newAp.listingUrl.$invalid && !newAp.listingUrl.$pristine" class="help-block">Listing URL is required.</p>
+</div>
+<div class="form-group">
+  <label>Listing Source</label>
+  <input type="text" name="listingSource" class="form-control" ng-model="listingSource">
+</div>
+
+
     <div class="container">
   <div class="row">
       <div class='col-sm-6'>
@@ -137,23 +140,14 @@
 </script> -->
 </div>
 </div>
-    <div class="input-group">
-      <span class="input-group-addon" id="basic-addon1">Offer</span>
-      <input type="text" class="form-control" placeholder="$">
-    </div>
-    <br>
-    <div class="input-group">
-      <span class="input-group-addon" id="basic-addon1">Rejected</span>
-      <input type="text" class="form-control" placeholder=":(">
-    </div>
+<div class="form-group">
+  <label>Offer</label>
+  <input type="text" name="offer" class="form-control" ng-model="offer">
+</div>
     <fieldset class="form-group">
-   <label for="Textarea">Notes</label>
-   <textarea class="form-control" id="NotesTextarea" rows="4"></textarea>
+   <label for="notes">Notes</label>
+   <textarea class="form-control" id="notes" rows="4"></textarea>
  </fieldset>
-    <div class="input-group">
-      <span class="input-group-addon" id="basic-addon1">Resume</span>
-      <input type="text" class="form-control" placeholder="Resume">
-    </div>
     <br>
     <div>
     <label class="btn btn-default btn-file">
@@ -165,20 +159,42 @@
 </label>
 </div>
 <br>
-<span class='label label-info' id="upload-file-info"></span>
-    <div class="input-group">
-      <span class="input-group-addon" id="basic-addon1">Cover Letter</span>
-      <input type="text" class="form-control" placeholder="Letter">
-    </div>
+<label class="btn btn-default btn-file">
+Browse <input type="file" style="display: none;">
+</label>
+<label class="btn btn-primary" for="my-file-selector">
+<input id="my-file-selector" type="file" style="display:none;" onchange="$('#upload-file-info').html($(this).val());">
+<i class="fa fa-paperclip" aria-hidden="true"></i> Attach Cover Letter
+</label>
+</div>
     <br>
-    <div class="input-group">
-      <span class="input-group-addon" id="basic-addon1">Company Webstite</span>
-      <input type="text" class="form-control" placeholder="www.mcdonalds.com">
-    </div>
     <br>
+    <div class="form-group">
+            <label>Company Contact Name</label>
+            <input type="text" name="companyContactName" class="form-control" ng-model="companyContactName">
+        </div>
+
+
+        <div class="form-group">
+            <label>Company Contact Phone Number</label>
+            <input type="text" name="companyContactPhoneNumber" class="form-control" ng-model="companyContactPhoneNumber" ng-minlength="10">
+        </div>
+
+
+        <div class="form-group">
+            <label>Company Contact Email</label>
+            <input type="email" name="companyContactEmail" class="form-control" ng-model="companyContactEmail">
+        </div>
+
+    <div class="form-group">
+      <label>Company Website</label>
+      <input type="text" name="companyWebsite" class="form-control" ng-model="companyWebsite">
+    </div>
     <fieldset class="form-group">
-   <label for="Textarea">Company Technology Notes</label>
-   <textarea class="form-control" id="NotesTextarea" rows="4"></textarea>
+   <label for="companyTechnologyNotes">Company Technology Notes</label>
+   <textarea class="form-control" id="companyTechnologyNotes" rows="4"></textarea>
  </fieldset>
+ <button type="submit" class="btn btn-primary" ng-disabled="newAp.$invalid">Save</button>
+
 
   </form>
