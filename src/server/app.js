@@ -9,8 +9,9 @@ var LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
 var passport = require('passport')
 var cookieSession = require('cookie-session');
 var db  = require('db/db');
+// var jobs = require('./jobs')
 // *** routes *** //
-var routes = require('./routes/index.js');
+// var routes = require('./routes/index.js');
 require('dotenv').load()
 
 // *** express instance *** //
@@ -47,6 +48,7 @@ passport.use(new LinkedInStrategy({
     return done(null, profile);
   });
 }));
+
 app.get('/auth/linkedin',
   passport.authenticate('linkedin',
   function(req, res){
@@ -72,9 +74,14 @@ app.use(function (req, res, next) {
   next()
 })
 
-// app.use('/api', require('api'))
+app.use('/api', require('./api'))
 
-app.use('/', routes);
+app.get('*', function(req, res) {
+  res.sendFile(path.join(__dirname, '../../client', 'index.html'));
+});
+
+// app.use('/', routes);
+// app.use('/job', job);
 
 
 // catch 404 and forward to error handler

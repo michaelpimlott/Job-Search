@@ -16,24 +16,11 @@ myApp.controller('LoginController', [
 
   }
 ]);
-myApp.controller('CalendarController', [
-  '$scope', '$http',
-  function($scope, $http) {
-    $scope.view = {};
-    $scope.view.tester = 'This is the one with the calendar';
-  }
-]);
+
 myApp.controller('NewController', [
   '$scope', '$http',
   function($scope, $http) {
     $scope.view = {};
 
-  }
-]);
-myApp.controller('ShowController', [
-  '$scope', '$http',
-  function($scope, $http) {
-    $scope.view = {};
-    $scope.view.test = 'Show whatever you want.';
   }
 ]);

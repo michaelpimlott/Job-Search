@@ -13,7 +13,7 @@ myApp.config(['$routeProvider', function ($routeProvider) {
       templateUrl: 'partials/newJob.html',
       controller: 'NewController'
     })
-    .when('/show', {
+    .when('/show/:id', {
       templateUrl: 'partials/showJob.html',
       controller: 'ShowController'
     })
