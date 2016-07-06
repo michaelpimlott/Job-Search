@@ -1,4 +1,4 @@
-
+<div ng-controller="NewController">
 <form name="newApplication" ng-submit="submitForm(newApplication.$valid)" novalidate>
     <h3>New Application</h3>
     <div class="form-group" ng-class="{ 'has-error' : newApplication.companyName.$invalid && !newApplication.companyName.$pristine }">
@@ -203,3 +203,4 @@ Browse <input type="file" style="display: none;">
 
 {{ newApplication }}
   </form>
+</div>
