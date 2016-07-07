@@ -20,17 +20,35 @@ function JobContacts() {
 }
 
 // /api/jobs/...
-router.get('/', function(req, res, next){
-  JobApplication().then(function(job_applications){
-    // res.render('newJob', {job_application: job_application})
+router.get('/', function(req, res, next) {
+  JobApplication().then(function(job_applications) {
     res.json(job_applications);
   })
 });
-router.get('/:id', function(req, res, next){
+router.get('/:id', function(req, res, next) {
   console.log('incoming req', req.params.id)
-  JobApplication().where('id', req.params.id).first().then(function(job_application){
-    res.json(job_application);
+  Promise.all([
+    JobApplication().where('id', req.params.id).first(),
+    JobActivity().where('job_application_id', req.params.id),
+    JobContacts().where('job_application_id', req.params.id)
+  ]).then(function(results) {
+    var JobApplication = results[0];
+    JobApplication.activities = results[1];
+    JobApplication.contacts = results[2];
+    res.json(JobApplication);
   })
 });
-router.get('/:id')
+
+router.post('/', function(req, res, next) {
+  return JobApplication().insert({
+      user_id: req.body.id,
+      company: req.body.company,
+      job_title: req.body.job_title
+    }).returning('id').then(function(ids) {
+      res.json('id', ids[0]);
+    })
+    //insert into job app table returning the id of the job that was insertd
+    //then(function(){res.json id: inserted id [])
+})
+
 module.exports = router;

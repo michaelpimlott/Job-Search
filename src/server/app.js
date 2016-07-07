@@ -55,7 +55,7 @@ app.get('/auth/linkedin',
     // The request will be redirected to LinkedIn for authentication, so this
     // function will not be called.
   }));
-  app.get('/auth/linkedin/callback', passport.authenticate('linkedin', {
+  app.get('/login', passport.authenticate('linkedin', {
   successRedirect: '/',
   failureRedirect: '/login'
 }));

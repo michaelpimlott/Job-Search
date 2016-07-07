@@ -5,14 +5,13 @@ exports.up = function(knex, Promise) {
     table.string('first_name');
     table.string('last_name');
     table.string('email');
-    table.timestamps();
   }).then(function() {
     return knex.schema.createTable('job_application', function(table) {
       table.increments();
-      table.integer('user_id');
+      table.integer('user_id').unsigned().references('id').inTable('users').onDelete('cascade');
       table.string('company');
       table.string('job_title');
-      table.dateTime('postDate');
+      table.timestamps();
     }).then(function() {
       return Promise.all([
 
@@ -21,7 +20,7 @@ exports.up = function(knex, Promise) {
           table.string('type');
           table.string('description');
           table.integer('job_application_id').unsigned().references('id').inTable('job_application').onDelete('cascade');
-          table.dateTime('date');
+          table.datetime('date');
         }),
 
         knex.schema.createTable('job_contacts', function(table) {

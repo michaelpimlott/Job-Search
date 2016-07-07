@@ -1,7 +1,6 @@
-myApp.controller('CalendarController', [
-  '$scope', '$http',
+myApp.controller('CalendarController', 
   function($scope, $http) {
     $scope.view = {};
     $scope.view.tester = 'This is the one with the calendar';
   }
-]);
+);

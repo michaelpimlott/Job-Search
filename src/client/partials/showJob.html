@@ -1,5 +1,8 @@
 <div ng-controller="ShowController">
 <h1>Show<h1>
-{{job.company}}
-{{job.job_title}}
+Company: {{job.company}}
+<br>
+Job Title: {{job.job_title}}
+{{job.activities}}
 <div>
+<div ng-repeat="activity in activities"></div>
