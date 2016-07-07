@@ -30,6 +30,10 @@ app.use(cookieSession({
   keys: [process.env.SESSION_KEY]
 }));
 
+
+
+
+
 // http://localhost:3000/auth/linkedIn/callback
 
 passport.use(new LinkedInStrategy({
@@ -80,8 +84,7 @@ app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname, '../../client', 'index.html'));
 });
 
-// app.use('/', routes);
-// app.use('/job', job);
+
 
 
 // catch 404 and forward to error handler

@@ -1,206 +1,42 @@
 <div ng-controller="NewController">
-<form name="newApplication" ng-submit="submitForm(newApplication.$valid)" novalidate>
-    <h3>New Application</h3>
-    <div class="form-group" ng-class="{ 'has-error' : newApplication.companyName.$invalid && !newApplication.companyName.$pristine }">
-      <label>Company</label>
-      <input type="text" name="companyName" class="form-control" ng-model="companyName" required>
-      <p ng-show="newApplication.companyName.$invalid && !newApplication.companyName.$pristine" class="help-block">Company name is required.</p>
-    </div>
-
-    <div class="form-group" ng-class="{ 'has-error' : newApplication.jobTitle.$invalid && !newApplication.jobTitle.$pristine }">
-      <label>Job Title</label>
-      <input type="text" name="jobTitle" class="form-control" ng-model="jobTitle" required>
-      <p ng-show="newApplication.jobTitle.$invalid && !newApplication.jobTitle.$pristine" class="help-block">Job title is required.</p>
-    </div>
-    <!-- <fieldset class="form-group">
-      <label for="status">Status</label>
-      <select multiple class="form-control" id="status">
-        <option>Active</option>
-        <option>Inactive</option>
-      </select>
-    </fieldset> -->
-    <div class="container">
-  <div class="row">
-      <div class='col-sm-6'>
-          <div class="form-group">
-              <div  class='input-group date' id='datetimepicker1'>
-                  <input name="applicationDate" type='text' class="form-control" ng-model="applicationDate" />
-                  <span class="input-group-addon">Application Date
-                      <span class="glyphicon glyphicon-calendar"></span>
-                  </span>
-              </div>
-          </div>
-      </div>
-
-  </div>
-</div>
-<div class="form-group" ng-class="{ 'has-error' : newApplication.listingUrl.$invalid && !newApplication.listingUrl.$pristine }">
-  <label>Listing URL</label>
-  <input type="text" name="listingUrl" class="form-control" ng-model="listingUrl">
-  <p ng-show="newApplication.listingUrl.$invalid && !newApplication.listingUrl.$pristine" class="help-block">Listing URL is required.</p>
-</div>
-<div class="form-group">
-  <label>Listing Source</label>
-  <input type="text" name="listingSource" class="form-control" ng-model="listingSource">
-</div>
-
-
-    <!-- <div class="container">
-  <div class="row">
-      <div class='col-sm-6'>
-          <div class="form-group">
-              <div  class='input-group date' id='datetimepicker1'>
-                  <input type='text' class="form-control" />
-                  <span class="input-group-addon">Informational Interview Date
-                      <span class="glyphicon glyphicon-calendar"></span>
-                  </span>
-              </div>
-          </div>
-      </div> -->
-      <!-- <script type="text/javascript">
-          $(function () {
-              $('#datetimepicker1').datetimepicker();
-          });
-      </script> -->
-  <!-- </div>
-</div>
-<div class="container">
-<div class="row">
-<div class='col-sm-6'>
-    <div class="form-group">
-        <div class='input-group date' id='datetimepicker1'>
-            <input type='text' class="form-control" />
-            <span class="input-group-addon">Phone Screeening Date
-                <span class="glyphicon glyphicon-calendar"></span>
-            </span>
+    <form name="newApplication" ng-submit="submitForm(newApplication.$valid)" novalidate>
+        <h3>New Application</h3>
+        <div class="form-group" ng-class="{ 'has-error' : newApplication.companyName.$invalid && !newApplication.companyName.$pristine }">
+            <label>Company</label>
+            <input type="text" name="companyName" class="form-control" ng-model="companyName" required>
+            <p ng-show="newApplication.companyName.$invalid && !newApplication.companyName.$pristine" class="help-block">Company name is required.</p>
         </div>
-    </div>
-</div> -->
-<!-- <script type="text/javascript">
-    $(function () {
-        $('#datetimepicker1').datetimepicker();
-    });
-</script> -->
-<!-- </div>
-</div>
-<div class="container">
-<div class="row">
-  <div class='col-sm-6'>
-      <div class="form-group">
-          <div class='input-group date' id='datetimepicker1'>
-              <input type='text' class="form-control" />
-              <span class="input-group-addon">Technical Interview Date
-                  <span class="glyphicon glyphicon-calendar"></span>
-              </span>
-          </div>
-      </div>
-  </div> -->
-  <!-- <script type="text/javascript">
-      $(function () {
-          $('#datetimepicker1').datetimepicker();
-      });
-  </script> -->
-<!-- </div>
-</div>
-<div class="container">
-  <div class="row">
-      <div class='col-sm-6'>
-          <div class="form-group">
-              <div  class='input-group date' id='datetimepicker1'>
-                  <input type='text' class="form-control" />
-                  <span class="input-group-addon">On-Site Interview Date
-                      <span class="glyphicon glyphicon-calendar"></span>
-                  </span>
-              </div>
-          </div>
-      </div> -->
-      <!-- <script type="text/javascript">
-          $(function () {
-              $('#datetimepicker1').datetimepicker();
-          });
-      </script> -->
-  <!-- </div>
-</div>
-<div class="container">
-<div class="row">
-<div class='col-sm-6'>
-    <div class="form-group">
-        <div  class='input-group date' id='datetimepicker1'>
-            <input type='text' class="form-control" />
-            <span class="input-group-addon">Take Home Interview Date
-                <span class="glyphicon glyphicon-calendar"></span>
-            </span>
+
+        <div class="form-group" ng-class="{ 'has-error' : newApplication.jobTitle.$invalid && !newApplication.jobTitle.$pristine }">
+            <label>Job Title</label>
+            <input type="text" name="jobTitle" class="form-control" ng-model="jobTitle" required>
+            <p ng-show="newApplication.jobTitle.$invalid && !newApplication.jobTitle.$pristine" class="help-block">Job title is required.</p>
         </div>
-    </div>
-</div> -->
-<!-- <script type="text/javascript">
-    $(function () {
-        $('#datetimepicker1').datetimepicker();
-    });
-</script> -->
-</div>
-</div>
-<div class="form-group">
-  <label>Offer</label>
-  <input type="text" name="offer" class="form-control" ng-model="offer">
-</div>
-    <fieldset class="form-group">
-   <label for="notes">Notes</label>
-   <textarea class="form-control" id="notes" name="notes" ng-model="notes" rows="4"></textarea>
- </fieldset>
-    <br>
-    <div>
-    <label class="btn btn-default btn-file">
-  Browse <input type="file" style="display: none;">
-  </label>
-  <label class="btn btn-primary" for="my-file-selector">
-  <input id="my-file-selector" type="file" style="display:none;" onchange="$('#upload-file-info').html($(this).val());">
-  <i class="fa fa-paperclip" aria-hidden="true"></i> Attach Resume
-</label>
-</div>
-<br>
-<label class="btn btn-default btn-file">
-Browse <input type="file" style="display: none;">
-</label>
-<label class="btn btn-primary" for="my-file-selector">
-<input id="my-file-selector" type="file" style="display:none;" onchange="$('#upload-file-info').html($(this).val());">
-<i class="fa fa-paperclip" aria-hidden="true"></i> Attach Cover Letter
-</label>
-</div>
-<fieldset class="form-group">
-    <label for="exampleInputFile"><i class="fa fa-paperclip" aria-hidden="true"></i> Attach Resume</label>
-    <input type="file" class="form-control-file" id="exampleInputFile">
-    <small class="text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
-  </fieldset>
-    <br>
-    <br>
-    <div class="form-group">
-            <label>Company Contact Name</label>
-            <input type="text" name="companyContactName" class="form-control" ng-model="companyContactName">
+
+        <div class="form-group" ng-class="{ 'has-error' : newApplication.listingUrl.$invalid && !newApplication.listingUrl.$pristine }">
+            <label>Listing URL</label>
+            <input type="text" name="listingUrl" class="form-control" ng-model="listingUrl">
+            <p ng-show="newApplication.listingUrl.$invalid && !newApplication.listingUrl.$pristine" class="help-block">Listing URL is required.</p>
         </div>
+
+        <fieldset class="form-group">
+            <label for="exampleInputFile"><i class="fa fa-paperclip" aria-hidden="true"></i> Attach Resume</label>
+            <input type="file" class="form-control-file" id="exampleInputFile">
+            <small class="text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+        </fieldset>
 
 
         <div class="form-group">
-            <label>Company Contact Phone Number</label>
-            <input type="text" name="companyContactPhoneNumber" class="form-control" ng-model="companyContactPhoneNumber" ng-minlength="10">
-        </div>
+            <fieldset class="form-group">
+                <label for="exampleInputFile"><i class="fa fa-paperclip" aria-hidden="true"></i> Attach Cover Letter</label>
+                <input type="file" class="form-control-file" id="exampleInputFile">
+                <small class="text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+            </fieldset>
+            <br>
+            <br>
+            <div class="form-group">
 
 
-        <div class="form-group">
-            <label>Company Contact Email</label>
-            <input type="email" name="companyContactEmail" class="form-control" ng-model="companyContactEmail">
-        </div>
 
-    <div class="form-group">
-      <label>Company Website</label>
-      <input type="text" name="companyWebsite" class="form-control" ng-model="companyWebsite">
+    </form>
     </div>
-    <fieldset class="form-group">
-   <label for="companyTechnologyNotes">Company Technology Notes</label>
-   <textarea name="companyTechnologyNotes" class="form-control" id="companyTechnologyNotes" ng-model="companyTechnologyNotes" rows="4"></textarea>
- </fieldset>
- <button type="submit" class="btn btn-primary" ng-disabled="newAp.$invalid">Save</button>
-
-{{ newApplication }}
-  </form>
-</div>

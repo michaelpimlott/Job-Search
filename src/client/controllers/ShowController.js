@@ -10,9 +10,10 @@ myApp.controller('ShowController',
     $http.post('api/jobs/', $scope.view.company)
     // company: $scope.view.company,
     // job_title: $scope.view.job_title,
-    // user_id: $scope.view.user_id 
+    // user_id: $scope.view.user_id
     .then(function(result) {
     console.log(result.data.id);
+    $location.path('/show/');
 
   })
 }

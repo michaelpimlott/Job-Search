@@ -2,14 +2,6 @@
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
 
-  //
-  // knex.schema.createTable('job_contacts', function(table) {
-  //   table.increments();
-  //   table.string('name');
-  //   table.string('title');
-  //   table.integer('phone');
-  //   table.string('email');
-  //   table.integer('job_application_id').unsigned().references('id').inTable('job_application').onDelete('cascade')
 
   return knex('users').del()
     .then(function () {
@@ -24,7 +16,8 @@ exports.seed = function(knex, Promise) {
           knex('job_application').insert({
             user_id: userId,
             company: 'Apple',
-            job_title: 'Boss'
+            job_title: 'Boss',
+            listing_URL:'http://stackoverflow.com/jobs/72146/javascript-developer-front-end-web-chefsteps-inc?searchTerm=javascript%20developer&offset=9&location=seattle&range=20'
           },'id').then(function(ids){
             var jobId = ids[0];
             return knex('job_activity').insert({
@@ -32,12 +25,21 @@ exports.seed = function(knex, Promise) {
               description: 'Got a callback',
               job_application_id: jobId,
               date: new Date()
+            }).then(function(ids){
+              var jobId = ids[0];
+              return knex('job_contacts').insert({
+                name: 'Roberto Clemons',
+                title: 'Public Relations Manager',
+                phone: '5439725478',
+                email: 'rclemons@aol.com',
+              })
             })
           }),
           knex('job_application').insert({
             user_id: userId,
             company: 'Google',
-            job_title: 'CEO'
+            job_title: 'CEO',
+            listing_URL:'http://stackoverflow.com/jobs/119600/front-end-developer-sportsrocket-inc?searchTerm=javascript%20developer&offset=2&location=seattle&range=20'
           },'id').then(function(ids){
             var jobId = ids[0];
             return knex('job_activity').insert({

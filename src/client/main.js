@@ -21,5 +21,9 @@ myApp.config(['$routeProvider', function ($routeProvider) {
       templateUrl: 'partials/calendar.html',
       controller: 'CalendarController'
   })
+    .when('/jobs', {
+      templateUrl: 'partials/jobList.html',
+      controller: 'JobListController'
+    })
     .otherwise({redirectTo: '/'});
 }]);

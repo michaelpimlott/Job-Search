@@ -11,6 +11,7 @@ exports.up = function(knex, Promise) {
       table.integer('user_id').unsigned().references('id').inTable('users').onDelete('cascade');
       table.string('company');
       table.string('job_title');
+      table.string('listing_URL')
       table.timestamps();
     }).then(function() {
       return Promise.all([
