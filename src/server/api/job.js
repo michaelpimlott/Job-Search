@@ -38,14 +38,17 @@ router.get('/:id', function(req, res, next) {
     res.json(JobApplication);
   })
 });
+//post :id/activity
 
 router.post('/', function(req, res, next) {
   return JobApplication().insert({
-      user_id: req.body.id,
+      user_id: 1,
+      //when auth is added change to current user (logged in)
       company: req.body.company,
-      job_title: req.body.job_title
+      job_title: req.body.job_title,
+      // listing_URL: req.body.listing_URL
     }).returning('id').then(function(ids) {
-      res.json('id', ids[0]);
+      res.json({id:ids[0]});
     })
     //insert into job app table returning the id of the job that was insertd
     //then(function(){res.json id: inserted id [])

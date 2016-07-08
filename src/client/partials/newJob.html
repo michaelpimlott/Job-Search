@@ -1,22 +1,22 @@
 <div ng-controller="NewController">
     <form name="newApplication" ng-submit="submitForm(newApplication.$valid)" novalidate>
         <h3>New Application</h3>
-        <div class="form-group" ng-class="{ 'has-error' : newApplication.companyName.$invalid && !newApplication.companyName.$pristine }">
+        <div class="form-group" ng-class="{ 'has-error' : newApplication.company.$invalid && !newApplication.company.$pristine }">
             <label>Company</label>
-            <input type="text" name="companyName" class="form-control" ng-model="companyName" required>
-            <p ng-show="newApplication.companyName.$invalid && !newApplication.companyName.$pristine" class="help-block">Company name is required.</p>
+            <input type="text" name="company" class="form-control" ng-model="company" required>
+            <p ng-show="newApplication.company.$invalid && !newApplication.company.$pristine" class="help-block">Company name is required.</p>
         </div>
 
-        <div class="form-group" ng-class="{ 'has-error' : newApplication.jobTitle.$invalid && !newApplication.jobTitle.$pristine }">
+        <div class="form-group" ng-class="{ 'has-error' : newApplication.job_title.$invalid && !newApplication.job_title.$pristine }">
             <label>Job Title</label>
-            <input type="text" name="jobTitle" class="form-control" ng-model="jobTitle" required>
-            <p ng-show="newApplication.jobTitle.$invalid && !newApplication.jobTitle.$pristine" class="help-block">Job title is required.</p>
+            <input type="text" name="job_title" class="form-control" ng-model="job_title" required>
+            <p ng-show="newApplication.job_title.$invalid && !newApplication.job_title.$pristine" class="help-block">Job title is required.</p>
         </div>
 
-        <div class="form-group" ng-class="{ 'has-error' : newApplication.listingUrl.$invalid && !newApplication.listingUrl.$pristine }">
+        <div class="form-group" ng-class="{ 'has-error' : newApplication.listing_URL.$invalid && !newApplication.listing_URL.$pristine }">
             <label>Listing URL</label>
-            <input type="text" name="listingUrl" class="form-control" ng-model="listingUrl">
-            <p ng-show="newApplication.listingUrl.$invalid && !newApplication.listingUrl.$pristine" class="help-block">Listing URL is required.</p>
+            <input type="text" name="listing_URL" class="form-control" ng-model="listing_URL">
+            <p ng-show="newApplication.listing_URL.$invalid && !newApplication.listing_URL.$pristine" class="help-block">Listing URL is required.</p>
         </div>
 
         <fieldset class="form-group">
@@ -35,8 +35,16 @@
             <br>
             <br>
             <div class="form-group">
+              <input filepicker type="filepicker" data-fp-services="computer,facebook,dropbox,box" on-success="onSuccess(event.fpfile)" />
+              <div filepicker-preview url="previewUrlExample" style="width:90%; height:500px"></div>
+
+              <!-- <script type="text/javascript" src="//api.filestackapi.com/filestack.js"></script>
+
+            <input type="filepicker" data-fp-apikey="AV8OvVTwfSo2aQ4lhJZjSz"
+            onchange="alert(event.fpfile.url)"> -->
 
 
 
+    <button type="submit" class="btn btn-primary">Save Job</button>
     </form>
     </div>
