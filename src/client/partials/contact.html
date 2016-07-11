@@ -1,0 +1,28 @@
+<div ng-controller="ContactController">
+    <form name="newContact" ng-submit="submit(newContact.$valid)" novalidate>
+        <h3>Add Contact</h3>
+        <div class="form-group" ng-class="{ 'has-error' : newContact.name.$invalid && !newContact.name.$pristine }">
+            <label>Name</label>
+            <input type="text" name="name" class="form-control" ng-model="name" required>
+            <p ng-show="newContact.name.$invalid && !newContact.name.$pristine" class="help-block">Contact name is required.</p>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-error' : newContact.title.$invalid && !newContact.title.$pristine }">
+            <label>Title</label>
+            <input type="text" name="title" class="form-control" ng-model="title" required>
+            <p ng-show="newContace.title.$invalid && !newContact.title.$pristine" class="help-block">Job title is required.</p>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-error' : newContact.phone.$invalid && !newContact.phone.$pristine }">
+            <label>Phone</label>
+            <input type="text" name="phone" class="form-control" ng-model="phone">
+            <p ng-show="newContact.phone.$invalid && !newContact.phone.$pristine" class="help-block">Please add phone number.</p>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-error' : newContact.email.$invalid && !newContact.email.$pristine }">
+            <label>Email</label>
+            <input type="email" name="email" class="form-control" ng-model="email">
+            <p ng-show="newContact.email.$invalid && !newContact.email.$pristine" class="help-block">Please add valid Email.</p>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-md">Add</button>

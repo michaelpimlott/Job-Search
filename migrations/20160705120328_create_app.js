@@ -28,7 +28,7 @@ exports.up = function(knex, Promise) {
           table.increments();
           table.string('name');
           table.string('title');
-          table.integer('phone');
+          table.string('phone');
           table.string('email');
           table.integer('job_application_id').unsigned().references('id').inTable('job_application').onDelete('cascade')
 

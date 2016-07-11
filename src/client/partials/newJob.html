@@ -20,31 +20,24 @@
         </div>
 
         <fieldset class="form-group">
-            <label for="exampleInputFile"><i class="fa fa-paperclip" aria-hidden="true"></i> Attach Resume</label>
+            <label for="exampleInputFile"> Attach Resume <i class="fa fa-paperclip" aria-hidden="true"></i> </label>
             <input type="file" class="form-control-file" id="exampleInputFile">
-            <small class="text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+            <small class="text-muted">Attach a copy of your resume </small>
         </fieldset>
 
 
         <div class="form-group">
             <fieldset class="form-group">
-                <label for="exampleInputFile"><i class="fa fa-paperclip" aria-hidden="true"></i> Attach Cover Letter</label>
+                <label for="exampleInputFile">Attach Cover Letter <i class="fa fa-paperclip" aria-hidden="true"></i></label>
                 <input type="file" class="form-control-file" id="exampleInputFile">
-                <small class="text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+                <small class="text-muted">Attach a cover letter to accompany this application</small>
             </fieldset>
+        </div>
             <br>
-            <br>
-            <div class="form-group">
-              <input filepicker type="filepicker" data-fp-services="computer,facebook,dropbox,box" on-success="onSuccess(event.fpfile)" />
-              <div filepicker-preview url="previewUrlExample" style="width:90%; height:500px"></div>
-
-              <!-- <script type="text/javascript" src="//api.filestackapi.com/filestack.js"></script>
-
-            <input type="filepicker" data-fp-apikey="AV8OvVTwfSo2aQ4lhJZjSz"
-            onchange="alert(event.fpfile.url)"> -->
 
 
 
-    <button type="submit" class="btn btn-primary">Save Job</button>
+
+    <button id="save" type="submit" class="btn btn-primary ">Save Job</button>
     </form>
     </div>

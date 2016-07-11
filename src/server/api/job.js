@@ -46,12 +46,36 @@ router.post('/', function(req, res, next) {
       //when auth is added change to current user (logged in)
       company: req.body.company,
       job_title: req.body.job_title,
-      // listing_URL: req.body.listing_URL
+      listing_URL: req.body.listing_URL
     }).returning('id').then(function(ids) {
       res.json({id:ids[0]});
     })
-    //insert into job app table returning the id of the job that was insertd
-    //then(function(){res.json id: inserted id [])
+
 })
+
+router.put('/:id/contact', function(req, res, next){
+   JobContacts().where({id: req.params.id}).update({
+     name: req.body.name,
+     title: req.body.title,
+     phone: req.body.phone,
+     email: req.body.email
+   }).then(function(ids){
+    res.render({id:ids[0]});
+  });
+});
+
+router.get('/:id/delete', function(req, res, next) {
+  JobApplication().where({ id: req.params.id }).first().then(function(){
+    res.render({id:ids[0]});
+
+  });
+});
+
+router.delete('/:id', function(req, res, next) {
+  JobApplication().where({id: req.params.id}).del().then(function(results){
+    console.log('test');
+  });
+});
+
 
 module.exports = router;

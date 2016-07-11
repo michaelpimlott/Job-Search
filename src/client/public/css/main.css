@@ -1,47 +1,48 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  padding-bottom: 70px;
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    padding-bottom: 70px;
 }
-
 a {
-  color: black;
+    color: black;
 }
-
 .navbar-fixed-left {
-  width: 140px;
-  position: fixed;
-  border-radius: 0;
-  height: 100%;
-  background-color: #1E90FF;
+    width: 140px;
+    position: fixed;
+    border-radius: 0;
+    height: 100%;
+    background-color: #1E90FF;
 }
-
-.navbar-fixed-left .navbar-nav > li {
-  float: none;
-  width: 139px;
+.navbar-fixed-left .navbar-nav> li {
+    float: none;
+    width: 139px;
 }
-
-.navbar-fixed-left + .container {
-  padding-left: 160px;
+.navbar-fixed-left+ .container {
+    padding-left: 160px;
 }
-
-
-.navbar-fixed-left .navbar-nav > li > .dropdown-menu {
-  margin-top: -50px;
-  margin-left: 140px;
+.navbar-fixed-left .navbar-nav> li> .dropdown-menu {
+    margin-top: -50px;
+    margin-left: 140px;
 }
-
 #footer {
-  color: white;
+    color: white;
+    text-align: center;
+}
+#datetimepicker1 {
+    width: 750px;
+    right: 15px;
+}
+.blueType {
+    color: #57AD68;
+}
+.buttons {
+    text-align: center;
+    padding-top: 20px;
+
+}
+#save {
   text-align: center;
-
 }
-
-#datetimepicker1{
-  width: 750px;
-  right: 15px ;
-}
-
-.blueType{
-  color:#57AD68;
+#title {
+  color: gray;
 }

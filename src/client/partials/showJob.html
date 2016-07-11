@@ -1,8 +1,19 @@
 <div ng-controller="ShowController">
-<h1>Show<h1>
 <span class="blueType">Company:</span> {{job.company}}
 <br>
 <span class="blueType">Job Title:</span> {{job.job_title}}
+<br>
+<span class="blueType">Listing Url:</span> {{job.listing_URL}}
+{{job.contacts.name}}
 {{job.activities}}
-<div>
+
+<div class="buttons">
+  <button type = "button" class = "btn btn-primary btn-md">
+        New Contact
+  </button>
+  <button type = "button" class = "btn btn-primary btn-md" >
+      Activity
+  </button>
+</div>
+
 <!-- <div ng-repeat=""></div> -->

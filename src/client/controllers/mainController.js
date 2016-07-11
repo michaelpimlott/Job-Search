@@ -1,14 +1,9 @@
 myApp.controller('MainController',
   function($scope, $http, $routeParams) {
-    $scope.view = {};
-    $scope.view.test= "hi, there";
-    $http.get('/api/jobs').then(function(data){
-    $scope.view.jobdata = data.data;
-});
+    $scope.test= "hi, there";
 
-    // $http.get('api/jobs/'+ $routeParams.id).then(function(result){
-    //   console.log(result);
-    //   $scope.job = result.data;
-    // })
-  }
-);
+    $http.get('/api/jobs').then(function(result){
+      console.log('got the data', result);
+      $scope.info = result.data;
+    });
+});
