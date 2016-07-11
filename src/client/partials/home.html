@@ -1,27 +1,21 @@
-
-
 <div>
-<!-- {{ jobdata }} -->
+    <!-- {{ jobdata }} -->
 
 
 
-  <ul>
-    <li ng-repeat='app in info'>
-        <span class="blueType">Company: </span>{{app.company}}
+    <ul>
+        <li ng-repeat='app in info'>
+            <span class="blueType">Company: </span>{{app.company}}
+            <br>
+            <span class="blueType">Title: </span>{{app.job_title}}
+            <br>
+            <span class="blueType">Listing Url: </span>{{app.listing_URL}}
+            <br>
+            <a ng-href="#/show/{{ app.id }}">Update</a> ________________________________________________________________________________________________________________________
+        </li>
+
         <br>
-        <span class="blueType">Title: </span>{{app.job_title}}
-       <br>
-        <span class="blueType">Listing Url: </span>{{app.listing_URL}}
-      <br>
-      <div class="form-group">
-            <div class="col-sm-15">
-                <button id="update" onclick="location.href='showJob.html';" type="submit" class="btn btn-default btn-block">Update</button>
-            </div>
-      ________________________________________________________________________________________________________________________
-     </li>
 
-       <br>
-
-  </ul>
-<!-- <div ng-repeat="job in jobdata"> -->
+    </ul>
+    <!-- <div ng-repeat="job in jobdata"> -->
 </div>

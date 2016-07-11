@@ -6,4 +6,8 @@ myApp.controller('MainController',
       console.log('got the data', result);
       $scope.info = result.data;
     });
+
+    $http.get('/api/jobs/' + $routeParams.Id).then(function(response) {
+    $scope.job = response.data;
+});
 });
