@@ -1,17 +1,17 @@
-<!-- <div ng-controller="ShowController"> -->
-    <span class="blueType">Company: </span> {{job.company}}
-    <br>
-    <span class="blueType">Job Title: </span> {{job.job_title}}
-    <br>
-    <span class="blueType">Listing Url: </span> {{job.listing_URL}}
+
+<span class="blueType">Company: </span> {{job.company}}
+<br>
+<span class="blueType">Job Title: </span> {{job.job_title}}
+<br>
+<span class="blueType">Listing Url: </span>
+<a ng-href="{{job.listing_URL}}">{{job.listing_URL}}</a>
 </div>
 <div>
     <h4>Job Contacts</h4>
 </div>
-{{job.name}}
-{{contact}}
+{{name}} {{contact.name}} {{contact.phone}}
 <div>
-    <form name="addActivity" ng-submit="addActivity()">
+    <form ng-submit="addActivity()">
         <h4>Job Activity</h4>
         <div class="form-group">
             <label for="">Type:</label>
@@ -25,44 +25,44 @@
             <button id="add" type="submit" class="btn btn-primary btn-md">
                 Add Activity
             </button>
+        </div>
     </form>
+</div>
+
+
+<div>
+    <h4>Recent Activity</h4>
+    <div>
+
+        {{type}} {{description}}
+
+
+        <ul>
+            <li ng-repeat='app in info'>
+
+                <span class="blueType">Type: </span>{{app.type}}
+                <br>
+                <span class="blueType">Description: </span>{{app.description}}
+                <br>
+
+
+            </li>
+
+            <br>
+
+        </ul>
+
+
+
+
+        {{type}} {{description}}
     </div>
 
 
-    <div>
-        <h4>Recent Activity</h4>
-        <div>
 
 
-
-
-            <ul>
-                <li ng-repeat='app in info'>
-                    <span class="blueType">Date: </span>{{app.date}}
-                    <br>
-                    <span class="blueType">Type: </span>{{app.type}}
-                    <br>
-                    <span class="blueType">Description: </span>{{app.description}}
-                    <br>
-
-                    <a ng-href="#/show/{{ app.id }}">Update</a> ________________________________________________________________________________________________________________________
-                </li>
-
-                <br>
-
-            </ul>
-
-
-
-
-            {{type}} {{description}}
-        </div>
-
-
-
-
-        <div class="buttons">
-            <a ng-href="#/job/{{job.id}}/addcontact" class="btn btn-primary btn-md" >
+    <div class="buttons">
+        <a ng-href="#/job/{{job.id}}/addcontact" class="btn btn-primary btn-md">
               Add New Contact
             </a>
-        </div>
+    </div>

@@ -66,6 +66,17 @@ router.post('/:id/contact', function(req, res, next){
   });
 });
 
+router.post('/:id/activity', function(req, res, next){
+  console.log('hi from', req.body);
+   JobActivity().where({id: req.params.id}).update({
+     type: req.body.type,
+     description: req.body.description,
+     time: req.body.time
+   },"id").then(function(ids){
+    res.json({id:ids[0]});
+  });
+});
+
 router.get('/:id/delete', function(req, res, next) {
   JobApplication().where({ id: req.params.id }).first().then(function(){
     res.json({id:ids[0]});

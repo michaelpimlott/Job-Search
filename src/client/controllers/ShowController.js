@@ -7,11 +7,12 @@ myApp.controller('ShowController',
     })
 
 
+
+
     $scope.addActivity = function() {
-      $http.post("/api/jobs/"+$scope.job.id+"/activity", {
+      $http.post("/api/jobs/"+$routeParams.id+"/activity", {
         'type': $scope.type,
-        'description': $scope.description,
-        'time': $scope.time
+        'description': $scope.description
       }).success(function(data, status, headers, config) {
         console.log('data inserted');
         console.log(data);
@@ -20,9 +21,7 @@ myApp.controller('ShowController',
 
     }
 
-//     $http.get('/api/jobs/contact/add/' + $routeParams.Id).then(function(response) {
-//     $scope.contact = response.data;
-// });
+
 });
 
   // });
