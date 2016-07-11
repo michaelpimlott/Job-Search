@@ -1,18 +1,33 @@
 myApp.controller('ContactController',
-  function($scope, $http, $location) {
-    $scope.view = {};
-    $scope.submit = function(){
-      $http.post("/api/jobs/:id/contact", {
+  function($scope, $http, $location,$routeParams) {
+    $scope.addNew = function(){
+      $http.post("/api/jobs/"+$routeParams.id+"/contact", {
         'name': $scope.name,
         'title': $scope.title,
         'phone': $scope.phone,
         'email': $scope.email
-      }).success(function(data, status, headers, config){
+      }).then(function(status){
         console.log('data inserted');
-        console.log(data);
-        $location.path('/show/'+data.id)
+        $location.path('/show/'+$routeParams.id)
       });
 
     }
   }
 );
+
+// myApp.controller('NewController',
+//   function($scope, $http, $window, $location) {
+//     $scope.submitForm = function(){
+//         $http.post("/api/jobs", {
+//           'company': $scope.company,
+//           'job_title': $scope.job_title,
+//           'listing_URL': $scope.listing_URL
+//         }).success(function(data, status, headers, config){
+//           console.log('data inserted');
+//           console.log(data);
+//           $location.path('/show/'+data.id)
+//         });
+//
+//       }
+//
+// });

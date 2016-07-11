@@ -1,4 +1,4 @@
-<div ng-controller="ShowController">
+<!-- <div ng-controller="ShowController"> -->
     <span class="blueType">Company: </span> {{job.company}}
     <br>
     <span class="blueType">Job Title: </span> {{job.job_title}}
@@ -8,7 +8,7 @@
 <div>
     <h4>Job Contacts</h4>
 </div>
-
+{{job.name}}
 {{contact}}
 <div>
     <form name="addActivity" ng-submit="addActivity()">
@@ -38,12 +38,14 @@
 
             <ul>
                 <li ng-repeat='app in info'>
+                    <span class="blueType">Date: </span>{{app.date}}
+                    <br>
                     <span class="blueType">Type: </span>{{app.type}}
                     <br>
                     <span class="blueType">Description: </span>{{app.description}}
                     <br>
 
-                    <a ng-href="#/show/{{ app.id }}">Update</a> ________________________________________________________________________________________________________________________ {{info.name}}
+                    <a ng-href="#/show/{{ app.id }}">Update</a> ________________________________________________________________________________________________________________________
                 </li>
 
                 <br>
@@ -60,7 +62,7 @@
 
 
         <div class="buttons">
-            <button type="button" class="btn btn-primary btn-md">
+            <a ng-href="#/job/{{job.id}}/addcontact" class="btn btn-primary btn-md" >
               Add New Contact
-            </button>
+            </a>
         </div>

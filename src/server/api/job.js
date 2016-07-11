@@ -41,6 +41,7 @@ router.get('/:id', function(req, res, next) {
 //post :id/activity
 
 router.post('/', function(req, res, next) {
+  console.log(req.body);
   return JobApplication().insert({
       user_id: 1,
       //when auth is added change to current user (logged in)
@@ -53,20 +54,21 @@ router.post('/', function(req, res, next) {
 
 })
 
-router.put('/:id/contact', function(req, res, next){
+router.post('/:id/contact', function(req, res, next){
+  console.log(req.body);
    JobContacts().where({id: req.params.id}).update({
      name: req.body.name,
      title: req.body.title,
      phone: req.body.phone,
      email: req.body.email
-   }).then(function(ids){
-    res.render({id:ids[0]});
+   },"id").then(function(ids){
+    res.json({id:ids[0]});
   });
 });
 
 router.get('/:id/delete', function(req, res, next) {
   JobApplication().where({ id: req.params.id }).first().then(function(){
-    res.render({id:ids[0]});
+    res.json({id:ids[0]});
 
   });
 });

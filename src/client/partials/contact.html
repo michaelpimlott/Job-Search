@@ -1,5 +1,5 @@
-<div ng-controller="ContactController">
-    <form name="newContact" ng-submit="submit(newContact.$valid)" novalidate>
+<div>
+    <form name="newContact" ng-submit="addNew()" novalidate>
         <h3>Add Contact</h3>
         <div class="form-group" ng-class="{ 'has-error' : newContact.name.$invalid && !newContact.name.$pristine }">
             <label>Name</label>
@@ -26,3 +26,5 @@
         </div>
 
         <button type="submit" class="btn btn-primary btn-md">Add</button>
+</form>
+</div>

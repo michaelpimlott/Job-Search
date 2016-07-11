@@ -80,9 +80,9 @@ app.use(function (req, res, next) {
 
 app.use('/api', require('./api'))
 
-app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, '../../client', 'index.html'));
-});
+// app.get('*', function(req, res) {
+//   res.sendFile(path.join(__dirname, '../../client', 'index.html'));
+// });
 
 
 
@@ -103,7 +103,7 @@ if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     console.log(err.status)
     res.status(err.status || 500);
-    res.send('error', {
+    res.json({
       message: err.message,
       error: err
     });
@@ -114,7 +114,7 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
-  res.send('error', {
+  res.json({
     message: err.message,
     error: {}
   });

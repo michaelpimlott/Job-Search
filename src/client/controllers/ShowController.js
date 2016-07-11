@@ -8,7 +8,7 @@ myApp.controller('ShowController',
 
 
     $scope.addActivity = function() {
-      $http.post("/api/jobs/:id/activity", {
+      $http.post("/api/jobs/"+$scope.job.id+"/activity", {
         'type': $scope.type,
         'description': $scope.description,
         'time': $scope.time
@@ -20,7 +20,12 @@ myApp.controller('ShowController',
 
     }
 
-  });
+//     $http.get('/api/jobs/contact/add/' + $routeParams.Id).then(function(response) {
+//     $scope.contact = response.data;
+// });
+});
+
+  // });
 
 // $scope.edit = function(routeparams) {
 //   console.log(routeParams.id);

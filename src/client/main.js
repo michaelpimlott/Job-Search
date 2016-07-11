@@ -26,7 +26,7 @@ myApp.config(['$routeProvider', function ($routeProvider) {
       templateUrl: 'partials/jobList.html',
       controller: 'JobListController'
     })
-    .when('/contact', {
+    .when('/job/:id/addcontact', {
       templateUrl: 'partials/contact.html',
       controller: 'ContactController'
     })
