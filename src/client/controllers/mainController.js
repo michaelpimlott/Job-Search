@@ -4,6 +4,7 @@ myApp.controller('MainController',
 
     $http.get('/api/jobs').then(function(result){
       console.log('got the data', result);
+      console.log(result.data);
       $scope.info = result.data;
     });
 

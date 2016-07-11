@@ -1,5 +1,5 @@
 <div>
-    <!-- {{ jobdata }} -->
+
 
 
 
@@ -10,12 +10,13 @@
             <span class="blueType">Title: </span>{{app.job_title}}
             <br>
             <span class="blueType">Listing Url: </span>{{app.listing_URL}}
-            <br>
+            <br> {{app.timestamps}}
             <a ng-href="#/show/{{ app.id }}">Update</a> ________________________________________________________________________________________________________________________
+            {{info.name}}  
         </li>
 
         <br>
 
     </ul>
-    <!-- <div ng-repeat="job in jobdata"> -->
+
 </div>

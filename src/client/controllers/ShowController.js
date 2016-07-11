@@ -1,19 +1,36 @@
 myApp.controller('ShowController',
-  function($scope, $http, $routeParams) {
+  function($scope, $http, $routeParams, $location) {
     console.log('the id is', $routeParams.id);
-    $http.get('/api/jobs/'+$routeParams.id).then(function(result) {
+    $http.get('/api/jobs/' + $routeParams.id).then(function(result) {
       console.log(result);
       $scope.job = result.data;
     })
-        $scope.edit = function(routeparams) {
-          console.log(routeParams.id);
-          http.get('/api/jobs' + routeParams.id).success(function(response){
-
-          })
-        };
 
 
-});
+    $scope.addActivity = function() {
+      $http.post("/api/jobs/:id/activity", {
+        'type': $scope.type,
+        'description': $scope.description,
+        'time': $scope.time
+      }).success(function(data, status, headers, config) {
+        console.log('data inserted');
+        console.log(data);
+        $location.path('/show/' + data.id)
+      });
+
+    }
+
+  });
+
+// $scope.edit = function(routeparams) {
+//   console.log(routeParams.id);
+//   http.get('/api/jobs' + routeParams.id).success(function(response){
+//
+//   })
+// };
+//
+
+// });
 
 
 

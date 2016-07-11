@@ -1,19 +1,66 @@
 <div ng-controller="ShowController">
-<span class="blueType">Company: </span> {{job.company}}
-<br>
-<span class="blueType">Job Title: </span> {{job.job_title}}
-<br>
-<span class="blueType">Listing Url: </span> {{job.listing_URL}}
-{{job.contacts.name}}
-{{job.activities}}
-
-<div class="buttons">
-  <button type = "button" class = "btn btn-primary btn-md">
-        New Contact
-  </button>
-  <button type = "button" class = "btn btn-primary btn-md" >
-      Activity
-  </button>
+    <span class="blueType">Company: </span> {{job.company}}
+    <br>
+    <span class="blueType">Job Title: </span> {{job.job_title}}
+    <br>
+    <span class="blueType">Listing Url: </span> {{job.listing_URL}}
+</div>
+<div>
+    <h4>Job Contacts</h4>
 </div>
 
-<!-- <div ng-repeat=""></div> -->
+{{contact}}
+<div>
+    <form name="addActivity" ng-submit="addActivity()">
+        <h4>Job Activity</h4>
+        <div class="form-group">
+            <label for="">Type:</label>
+            <input type="text" class="form-control" id="type" ng-model="type">
+        </div>
+
+
+        <div class="form-group">
+            <label for="activity">Description</label>
+            <textarea class="form-control" rows="5" id="description" ng-model="description"></textarea>
+            <button id="add" type="submit" class="btn btn-primary btn-md">
+                Add Activity
+            </button>
+    </form>
+    </div>
+
+
+    <div>
+        <h4>Recent Activity</h4>
+        <div>
+
+
+
+
+            <ul>
+                <li ng-repeat='app in info'>
+                    <span class="blueType">Type: </span>{{app.type}}
+                    <br>
+                    <span class="blueType">Description: </span>{{app.description}}
+                    <br>
+
+                    <a ng-href="#/show/{{ app.id }}">Update</a> ________________________________________________________________________________________________________________________ {{info.name}}
+                </li>
+
+                <br>
+
+            </ul>
+
+
+
+
+            {{type}} {{description}}
+        </div>
+
+
+
+
+        <div class="buttons">
+            <button type="button" class="btn btn-primary btn-md">
+              Add New Contact
+            </button>
+        </div>
