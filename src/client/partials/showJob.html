@@ -21,7 +21,7 @@
     <br>
     <span class="blueType">Email: </span>{{contact.email}}
   </li>
-  
+
 </ul>
 </div>
 <div>
@@ -35,15 +35,30 @@
       <h4>Job Activity</h4>
       <div class="form-group">
             <label for="">Type:</label>
-            <input type="text" class="form-control" id="type" ng-model="type">
-      </div>
+  <select ng-model="type" class="form-control" id="type">
+    <option>Applied</option>
+    <option>Note</option>
+    <option>Follow Up - Made Call</option>
+    <option>Follow Up - Sent Email</option>
+    <option>Contacted - Received Email</option>
+    <option>Contacted - Received Phone Call</option>
+    <option>Phone Screening</option>
+    <option>Interview Schedueled</option>
+    <option>Interview - H.R.</option>
+    <option>Interview - Technical</option>
+    <option>Interview - Onsite</option>
+    <option>Received Offer</option>
+  </select>
+</div>
+
+
       <div class="form-group">
             <label for="activity">Description</label>
             <textarea class="form-control" rows="5" id="description" ng-model="description"></textarea>
               <br>
 
               <label>Date: </label>
-    <input class="date form-control" style="width: 300px;" type="text">
+    <input id="date" class="date form-control" style="width: 300px;" type="text">
     <script type="text/javascript">
         $('.date').datepicker({
            format: 'mm-dd-yyyy'
@@ -64,8 +79,6 @@
 <div>
     <h4>Recent Activity</h4>
     <div>
-
-        <!-- {{type}} {{description}} {{date}} -->
 
         <ul>
 

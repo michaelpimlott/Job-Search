@@ -11,10 +11,13 @@ myApp.controller('ShowController',
 
 
     $scope.addActivity = function() {
+      var date= $('#date').val();
+      console.log(date);
       $http.post("/api/jobs/" + $routeParams.id + "/activity", {
+
         'type': $scope.type,
         'description': $scope.description,
-        'date': $scope.date
+        'date': date
       }).then(function(data, status, headers, config) {
         console.log('data inserted');
         console.log('this is that', data);
