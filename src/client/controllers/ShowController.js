@@ -1,5 +1,5 @@
 myApp.controller('ShowController',
-  function($scope, $http, $routeParams, $location) {
+  function($scope, $http, $routeParams, $location, $route) {
     console.log('the id is', $routeParams.id);
     $http.get('/api/jobs/' + $routeParams.id).then(function(result) {
       console.log(result);
@@ -9,14 +9,17 @@ myApp.controller('ShowController',
 
 
 
+
     $scope.addActivity = function() {
       $http.post("/api/jobs/" + $routeParams.id + "/activity", {
         'type': $scope.type,
-        'description': $scope.description
+        'description': $scope.description,
+        'date': $scope.date
       }).then(function(data, status, headers, config) {
         console.log('data inserted');
         console.log('this is that', data);
         $location.path('/show/' + $routeParams.id)
+        $route.reload();
       });
 
     }

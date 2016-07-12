@@ -1,61 +1,69 @@
-<span class="blueType">Company: </span>
-{{job.company}}
-<br>
-<span class="blueType">Job Title: </span> {{job.job_title}}
-<br>
-<span class="blueType">Listing Url: </span>
-<a ng-href="{{job.listing_URL}}">{{job.listing_URL}}</a>
+<div>
+  <span class="blueType">Company: </span>
+    {{job.company}}
+    <br>
+  <span class="blueType">Job Title: </span> {{job.job_title}}
+    <br>
+  <span class="blueType">Listing Url: </span>
+  <a ng-href="{{job.listing_URL}}">{{job.listing_URL}}</a>
 </div>
 <div>
     <h4>Job Contacts</h4>
 </div>
-
+<div>
+<ul>
+  <li ng-repeat='contact in job.contacts'>
+    <span class="blueType">Name: </span>{{contact.name}}
+    <br>
+    <span class="blueType">Phone: </span>{{contact.phone}}
+    <br>
+  </li>
+  <br>
+</ul>
+{{name}} {{contact.name}} {{contact.phone}}
+</div>
 <div class="buttons">
   <a ng-href="#/job/{{job.id}}/addcontact" class="btn btn-primary btn-md">
     Add New Contact
   </a>
 </div>
 
-<ul>
-
-    <li ng-repeat='contact in job.contacts'>
-        <span class="blueType">Name: </span>{{contact.name}}
-        <br>
-        <span class="blueType">Phone: </span>{{contact.phone}}
-        <br>
-
-
-    </li>
-
-    <br>
-
-</ul>
-{{name}} {{contact.name}} {{contact.phone}}
 <div>
     <form ng-submit="addActivity()">
-        <h4>Job Activity</h4>
-        <div class="form-group">
+      <h4>Job Activity</h4>
+      <div class="form-group">
             <label for="">Type:</label>
             <input type="text" class="form-control" id="type" ng-model="type">
-        </div>
-
-
-        <div class="form-group">
+      </div>
+      <div class="form-group">
             <label for="activity">Description</label>
             <textarea class="form-control" rows="5" id="description" ng-model="description"></textarea>
+              <br>
+
+              <label>Date: </label>
+    <input class="date form-control" style="width: 300px;" type="text">
+    <script type="text/javascript">
+        $('.date').datepicker({
+           format: 'mm-dd-yyyy'
+         });
+    </script>
+
+
+
+
+
             <button id="add" type="submit" class="btn btn-primary btn-md">
                 Add Activity
             </button>
-        </div>
+      </div>
     </form>
 </div>
-
 
 <div>
     <h4>Recent Activity</h4>
     <div>
 
-        {{type}} {{description}}
+        <!-- {{type}} {{description}} {{date}} -->
 
         <ul>
 
@@ -63,6 +71,9 @@
                 <span class="blueType">Type: </span>{{activity.type}}
                 <br>
                 <span class="blueType">Description: </span>{{activity.description}}
+                <br>
+                <span class="blueType">Date: </span>{{activity.date | date:'MM/dd/yyyy'}}
+
                 <br>
 
 
