@@ -15,14 +15,16 @@
   <li ng-repeat='contact in job.contacts'>
     <span class="blueType">Name: </span>{{contact.name}}
     <br>
+    <span class="blueType">Title: </span>{{contact.title}}
+    <br>
     <span class="blueType">Phone: </span>{{contact.phone}}
     <br>
+    <span class="blueType">Email: </span>{{contact.email}}
   </li>
-  <br>
+  
 </ul>
-{{name}} {{contact.name}} {{contact.phone}}
 </div>
-<div class="buttons">
+<div>
   <a ng-href="#/job/{{job.id}}/addcontact" class="btn btn-primary btn-md">
     Add New Contact
   </a>

@@ -60,7 +60,8 @@ router.post('/:id/contact', function(req, res, next){
      name: req.body.name,
      title: req.body.title,
      phone: req.body.phone,
-     email: req.body.email
+     email: req.body.email,
+     job_application_id: req.params.id
    },"id").then(function(ids){
     res.json({id:ids[0]});
   });
