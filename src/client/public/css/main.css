@@ -50,3 +50,7 @@ a {
 #add{
 margin-top: 20px;
 }
+#pic{
+  height: 100px;
+  width:auto;
+}

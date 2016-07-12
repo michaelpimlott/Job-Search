@@ -38,7 +38,7 @@ router.get('/:id', function(req, res, next) {
     res.json(JobApplication);
   })
 });
-//post :id/activity
+
 
 router.post('/', function(req, res, next) {
   console.log(req.body);
@@ -55,8 +55,8 @@ router.post('/', function(req, res, next) {
 })
 
 router.post('/:id/contact', function(req, res, next){
-  console.log(req.body);
-   JobContacts().where({id: req.params.id}).update({
+  console.log('whoop',req.body);
+   JobContacts().insert({
      name: req.body.name,
      title: req.body.title,
      phone: req.body.phone,
@@ -68,10 +68,11 @@ router.post('/:id/contact', function(req, res, next){
 
 router.post('/:id/activity', function(req, res, next){
   console.log('hi from', req.body);
-   JobActivity().where({id: req.params.id}).update({
+   JobActivity().insert({
      type: req.body.type,
      description: req.body.description,
-     time: req.body.time
+     date: req.body.date,
+     job_application_id: req.params.id
    },"id").then(function(ids){
     res.json({id:ids[0]});
   });

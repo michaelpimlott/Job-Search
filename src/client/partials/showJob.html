@@ -1,5 +1,5 @@
-
-<span class="blueType">Company: </span> {{job.company}}
+<span class="blueType">Company: </span>
+{{job.company}}
 <br>
 <span class="blueType">Job Title: </span> {{job.job_title}}
 <br>
@@ -9,6 +9,27 @@
 <div>
     <h4>Job Contacts</h4>
 </div>
+
+<div class="buttons">
+  <a ng-href="#/job/{{job.id}}/addcontact" class="btn btn-primary btn-md">
+    Add New Contact
+  </a>
+</div>
+
+<ul>
+
+    <li ng-repeat='contact in job.contacts'>
+        <span class="blueType">Name: </span>{{contact.name}}
+        <br>
+        <span class="blueType">Phone: </span>{{contact.phone}}
+        <br>
+
+
+    </li>
+
+    <br>
+
+</ul>
 {{name}} {{contact.name}} {{contact.phone}}
 <div>
     <form ng-submit="addActivity()">
@@ -36,13 +57,12 @@
 
         {{type}} {{description}}
 
-
         <ul>
-            <li ng-repeat='app in info'>
 
-                <span class="blueType">Type: </span>{{app.type}}
+            <li ng-repeat='activity in job.activities'>
+                <span class="blueType">Type: </span>{{activity.type}}
                 <br>
-                <span class="blueType">Description: </span>{{app.description}}
+                <span class="blueType">Description: </span>{{activity.description}}
                 <br>
 
 
@@ -55,14 +75,4 @@
 
 
 
-        {{type}} {{description}}
-    </div>
-
-
-
-
-    <div class="buttons">
-        <a ng-href="#/job/{{job.id}}/addcontact" class="btn btn-primary btn-md">
-              Add New Contact
-            </a>
     </div>

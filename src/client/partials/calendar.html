@@ -1,21 +1,17 @@
 
-<div ng-controller="CalendarController">
-<!-- {{ view.tester }} -->
+
 </div>
 <iframe src="https://calendar.google.com/calendar/embed?src=n4aj8qdq743osnj94bitc1g8j4%40group.calendar.google.com&ctz=America/Los_Angeles" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 
   <script src="https://apis.google.com/js/client.js?onload=checkAuth">
   </script>
   <script type="text/javascript">
-    // Your Client ID can be retrieved from your project in the Google
-    // Developer Console, https://console.developers.google.com
+
     var CLIENT_ID = '1072803210837-na4cdqqnn1up4rqij4cjddcjtfanj3d6.apps.googleusercontent.com';
 
     var SCOPES = ["https://www.googleapis.com/auth/calendar"];
 
-    /**
-     * Check if current user has authorized this application.
-     */
+
     function checkAuth() {
       gapi.auth.authorize(
         {
@@ -25,11 +21,7 @@
         }, handleAuthResult);
     }
 
-    /**
-     * Handle response from authorization server.
-     *
-     * @param {Object} authResult Authorization result.
-     */
+
     function handleAuthResult(authResult) {
       var authorizeDiv = document.getElementById('authorize-div');
       if (authResult && !authResult.error) {
@@ -37,17 +29,12 @@
         authorizeDiv.style.display = 'none';
         loadCalendarApi();
       } else {
-        // Show auth UI, allowing the user to initiate authorization by
-        // clicking authorize button.
+
         authorizeDiv.style.display = 'inline';
       }
     }
 
-    /**
-     * Initiate auth flow in response to user clicking authorize button.
-     *
-     * @param {Event} event Button click event.
-     */
+
     function handleAuthClick(event) {
       gapi.auth.authorize(
         {client_id: CLIENT_ID, scope: SCOPES, immediate: false},
@@ -55,10 +42,6 @@
       return false;
     }
 
-    /**
-     * Load Google Calendar client library. List upcoming events
-     * once client library is loaded.
-     */
     function loadCalendarApi() {
       gapi.client.load('calendar', 'v3', listUpcomingEvents);
     }
@@ -67,11 +50,7 @@
       'resource': event
     });
 
-    /**
-     * Print the summary and start datetime/date of the next ten events in
-     * the authorized user's calendar. If no events are found an
-     * appropriate message is printed.
-     */
+
     function listUpcomingEvents() {
       var request = gapi.client.calendar.events.list({
         'calendarId': 'primary',

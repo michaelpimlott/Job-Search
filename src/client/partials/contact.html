@@ -1,3 +1,4 @@
+
 <div>
     <form name="newContact" ng-submit="addNew()" novalidate>
         <h3>Add Contact</h3>
@@ -28,3 +29,23 @@
         <button type="submit" class="btn btn-primary btn-md">Add</button>
 </form>
 </div>
+
+{{contact.phone}} {{contact.name}} {{job_contacts.name}} {{job.contact.name}}
+
+<ul>
+
+    <li ng-repeat='contact in job.contacts'>
+        <span class="blueType">Type: </span>{{contact.name}}
+        <br>
+        <span class="blueType">Description: </span>{{contact.phone}}
+        <br>
+
+
+    </li>
+
+    <br>
+
+</ul>
+
+
+{{contacts}} {{contacts.name}} {{contacts.phone}}
