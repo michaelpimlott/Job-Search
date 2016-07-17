@@ -1,6 +1,16 @@
-myApp.controller('LoginController', 
-  function($scope) {
-    $scope.view = {};
-    $scope.view.test = 'do whatever you want.';
+myApp.controller('LoginController',
+  function($scope, $http, $routeParams) {
+    $http.get('api/jobs').then(function(result){
+      console.log('this data', result.data);
+      $scope.user = result.data;
+    })
+
+
+
+
+
+
+
+
   }
 );

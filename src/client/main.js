@@ -30,5 +30,6 @@ myApp.config(['$routeProvider', function ($routeProvider) {
       templateUrl: 'partials/contact.html',
       controller: 'ContactController'
     })
+    
     .otherwise({redirectTo: '/'});
 }]);

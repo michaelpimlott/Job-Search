@@ -2,9 +2,7 @@ var express = require('express');
 var router = express.Router();
 var knex = require('../../../db/knex');
 
-function Users() {
-  return knex('users');
-}
+
 
 function JobApplication() {
   return knex('job_application');
@@ -79,18 +77,15 @@ router.post('/:id/activity', function(req, res, next){
   });
 });
 
-router.get('/:id/delete', function(req, res, next) {
-  JobApplication().where({ id: req.params.id }).first().then(function(){
+router.delete('/:id/delete', function(req, res, next) {
+  var id = req.params.id;
+  JobApplication().remove({ id: req.params.id }).first().del().then(function(){
     res.json({id:ids[0]});
 
   });
 });
 
-router.delete('/:id', function(req, res, next) {
-  JobApplication().where({id: req.params.id}).del().then(function(results){
-    console.log('test');
-  });
-});
+
 
 
 module.exports = router;

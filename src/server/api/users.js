@@ -1,6 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
+
+function Users() {
+  return knex('users');
+}
+
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });

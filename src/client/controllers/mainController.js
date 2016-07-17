@@ -1,6 +1,6 @@
 myApp.controller('MainController',
   function($scope, $http, $routeParams) {
-    $scope.test= "hi, there";
+
 
     $http.get('/api/jobs').then(function(result){
       console.log('got the data', result);
@@ -8,7 +8,24 @@ myApp.controller('MainController',
       $scope.info = result.data;
     });
 
-    $http.get('/api/jobs/' + $routeParams.Id).then(function(response) {
-    $scope.job = response.data;
-});
+
+    // $scope.deleteJob = function(info){
+    //     $scope.info.splice($scope.info.indexOf($routeParams.id), 1);
+    //     $route.reload();
+    //
+    //
+    // };
+
+      $scope.deleteJob = function(){
+        $http.delete("api/jobs/" +$routeParams.id +"/delete").success(function(response){
+          $route.reload();
+        })
+      }
+
+
+
+
+
+
+
 });

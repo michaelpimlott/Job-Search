@@ -34,6 +34,7 @@ a {
 }
 .blueType {
     color: #57AD68;
+    font-size: 17px;
 }
 .buttons {
     text-align: center;
@@ -50,10 +51,7 @@ a {
 #add{
 margin-top: 20px;
 }
-#pic{
-  height: 100px;
-  width:auto;
-}
+
 
 .full button span {
    background-color: limegreen;
@@ -65,3 +63,11 @@ margin-top: 20px;
    border-radius: 32px;
    color: black;
  }
+
+#main {
+  padding-left: 10px;
+}
+
+#note{
+  color: #1E90FF;
+}

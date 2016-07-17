@@ -10,9 +10,11 @@
             <span class="blueType">Title: </span>{{app.job_title}}
             <br>
             <span class="blueType">Listing Url: </span>{{app.listing_URL}}
-            <br> {{app.timestamps}}
-            <a ng-href="#/show/{{ app.id }}">Update</a> ________________________________________________________________________________________________________________________
-            {{info.name}}  
+            <br> {{app.date}}
+            <a ng-href="#/show/{{ app.id }}">Update</a>
+            <button class="btn btn-info btn btn-sm" ng-click="deleteJob()">Delete</button>________________________________________________________________________________________________________________________
+
+
         </li>
 
         <br>

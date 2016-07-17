@@ -9,8 +9,7 @@
     <script src="https://use.fontawesome.com/9133c17e28.js"></script>
     <link rel="stylesheet" href="public/css/main.css">
     <link href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.4/yeti/bootstrap.min.css" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/superhero/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/superhero/bootstrap.min.css" rel="stylesheet" integrity="sha384-88w0u/oucDSTE30ETLLIobzhT+bQ6CSsiqQyLZpwHvve89eqUA9F2Db6ST6jGRLx" crossorigin="anonymous">
 </head>
 
 <body ng-app="cap">
@@ -24,14 +23,14 @@
                     <a class="navbar-brand" href="#">Menu</a>
                     <ul class="nav navbar-nav">
 
-                        <li><a href="/#/login"><span><i class="fa fa-navicon fa-2x"></i>  </span>Logout</a></li>
+                        <li><a href="/#/login"><span><i class="fa fa-navicon fa-2x"></i>  </span>Login</a></li>
                         <li><a href="/#/home"><span><i class="fa fa-home fa-2x"></i>  </span>Home</a></li>
                         <li><a href="/#/jobs"><span><i class="fa fa-random fa-2x"></i>  </span>Jobs</a></li>
                         <li><a href="#/new"><span><i class="fa fa-plus-square-o fa-2x"></i>  </span>New</a></li>
                         <li><a href="/#/calendar"><span><i class="fa fa-calendar fa-2x"></i>  </span>Calendar</a></li>
                     </ul>
                 </div>
-                <div class="col-md-8" ng-view></div>
+                <div id='main' class="col-md-8" ng-view></div>
             </div>
             <nav id="footer" class="navbar navbar-default navbar-fixed-bottom">
                 <div class="container">

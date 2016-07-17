@@ -56,14 +56,13 @@ passport.use(new LinkedInStrategy({
 app.get('/auth/linkedin',
   passport.authenticate('linkedin',
   function(req, res){
-    // The request will be redirected to LinkedIn for authentication, so this
-    // function will not be called.
+
   }));
-  app.get('/login', passport.authenticate('linkedin', {
+  app.get('/auth/linkedin/callback', passport.authenticate('linkedin', {
   successRedirect: '/',
   failureRedirect: '/login'
 }));
-// *** main routes *** //
+
 
 passport.serializeUser(function(user, done) {
   done(null, user);
@@ -80,9 +79,6 @@ app.use(function (req, res, next) {
 
 app.use('/api', require('./api'))
 
-// app.get('*', function(req, res) {
-//   res.sendFile(path.join(__dirname, '../../client', 'index.html'));
-// });
 
 
 
@@ -95,7 +91,7 @@ app.use(function(req, res, next) {
 });
 
 
-// *** error handlers *** //
+
 
 // development error handler
 // will print stacktrace
