@@ -78,7 +78,7 @@ router.post('/:id/activity', function(req, res, next){
 });
 
 router.delete('/:id/delete', function(req, res, next) {
-  var id = req.params.id;
+  // var id = req.params.id;
   JobApplication().remove({ id: req.params.id }).first().del().then(function(){
     res.json({id:ids[0]});
 

@@ -9,19 +9,13 @@ myApp.controller('MainController',
     });
 
 
-    // $scope.deleteJob = function(info){
-    //     $scope.info.splice($scope.info.indexOf($routeParams.id), 1);
-    //     $route.reload();
-    //
-    //
-    // };
+    $scope.deleteJob = function(info){
+        $scope.info.splice($scope.info.indexOf($routeParams.id), 1);
+        console.log($routeParams.id);
 
-      $scope.deleteJob = function(){
-        $http.delete("api/jobs/" +$routeParams.id +"/delete").success(function(response){
-          $route.reload();
-        })
-      }
 
+
+    };
 
 
 

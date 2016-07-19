@@ -71,3 +71,9 @@ margin-top: 20px;
 #note{
   color: #1E90FF;
 }
+
+#delete{
+  border-radius: 2px;
+  border: solid 2px white;
+  margin-left: 480px;
+}

@@ -5,10 +5,11 @@ return knex.raw('ALTER SEQUENCE users_id_seq restart;').then(function () {
   return knex('users').del()
   .then(function () {
     return   knex('users').insert({
-      username: 'Larry',
-      first_name: 'something',
-      last_name: 'somethingtoo',
-      email: 'something@something.com'
+      linkedin_id: '1',
+      email: 'something@something.com',
+      preferred_name: 'somethingtoo',
+      last_name: 'something@something.com',
+      avatar_url: 'http://wwwimages.adobe.com/content/dam/Adobe/en/devnet/authors/bio/m/michelle_yaiser_bio.jpg.adimg.mw.160.png',
     },'id').then(function(ids){
       var userId = ids[0];
       return Promise.all([

@@ -8,11 +8,14 @@ var bodyParser = require('body-parser');
 var LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
 var passport = require('passport')
 var cookieSession = require('cookie-session');
-var db  = require('db/db');
-// var jobs = require('./jobs')
-// *** routes *** //
-// var routes = require('./routes/index.js');
+// var db  = require('db/db');
+var knex = require('../../db/knex')
+
+
 require('dotenv').load()
+
+var indexRoutes = require('./routes/index.js');
+var authRoutes = require('./routes/auth.js');
 
 // *** express instance *** //
 var app = express();
@@ -24,11 +27,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../client')));
-app.use(passport.initialize());
 app.use(cookieSession({
   name: 'session',
   keys: [process.env.SESSION_KEY]
 }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 
@@ -43,15 +47,46 @@ passport.use(new LinkedInStrategy({
   scope: ['r_emailaddress', 'r_basicprofile'],
    state: true
 }, function(accessToken, refreshToken, profile, done) {
-  done(null, {id: profile.id, displayName: profile.displayName})
-  process.nextTick(function () {
+  knex('users')
+      .where({ linkedin_id: profile.id })
+      .orWhere({ email: profile.emails[0].value })
+      .first()
+      .then(function (user) {
+        if ( !user ) {
+          return knex('users').insert({
+            linkedin_id: profile.id,
+            email: profile.emails[0].value,
+            preferred_name: profile.name.givenName,
+            last_name: profile.name.familyName,
+            avatar_url: profile.photos[0].value
+          }, 'id').then(function (id) {
+            return done(null, id[0]);
+          });
+        } else {
+          return done(null, user.id);
+        }
+      });
+    }));
+
+
+    passport.serializeUser(function(user, done) {
+  // later this will be where you selectively send to the browser
+  // an identifier for your user, like their primary key from the
+  // database, or their ID from linkedin
+
+  done(null, user);
+});
+
+  //     });
+  // }));
+
+  // done(null, {id: profile.id, displayName: profile.displayName})
+  // process.nextTick(function () {
     // To keep the example simple, the user's LinkedIn profile is returned to
     // represent the logged-in user. In a typical application, you would want
     // to associate the LinkedIn account with a user record in your database,
     // and return that user instead.
-    return done(null, profile);
-  });
-}));
+      // return done(null, profile);
 
 app.get('/auth/linkedin',
   passport.authenticate('linkedin',

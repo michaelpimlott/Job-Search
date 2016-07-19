@@ -1,18 +1,21 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('users', function(table) {
     table.increments();
-    table.string('username');
-    table.string('first_name');
+    table.string('linkedin_id').unique();
+    table.string('email').unique();
+    table.string('preferred_name');
     table.string('last_name');
-    table.string('email');
+    table.text('avatar_url');
+    table.timestamp('created_at');
+    table.timestamp('updated_at');
   }).then(function() {
     return knex.schema.createTable('job_application', function(table) {
       table.increments();
       table.integer('user_id').unsigned().references('id').inTable('users').onDelete('cascade');
       table.string('company');
       table.string('job_title');
-      table.string('listing_URL')
-      table.timestamps();
+      table.string('listing_URL');
+      table.timestamps('created');
     }).then(function() {
       return Promise.all([
 
