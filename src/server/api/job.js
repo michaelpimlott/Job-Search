@@ -19,7 +19,7 @@ function JobContacts() {
 
 // /api/jobs/...
 router.get('/', function(req, res, next) {
-  JobApplication().then(function(job_applications) {
+  JobApplication().where('user_id', req.user.id).then(function(job_applications) {
     res.json(job_applications);
   })
 });
@@ -41,46 +41,53 @@ router.get('/:id', function(req, res, next) {
 router.post('/', function(req, res, next) {
   console.log(req.body);
   return JobApplication().insert({
-      user_id: 1,
-      //when auth is added change to current user (logged in)
-      company: req.body.company,
-      job_title: req.body.job_title,
-      listing_URL: req.body.listing_URL
-    }).returning('id').then(function(ids) {
-      res.json({id:ids[0]});
-    })
+    user_id: req.user.id,
+    company: req.body.company,
+    job_title: req.body.job_title,
+    listing_URL: req.body.listing_URL
+  }).returning('id').then(function(ids) {
+    res.json({
+      id: ids[0]
+    });
+  })
 
 })
 
-router.post('/:id/contact', function(req, res, next){
-  console.log('whoop',req.body);
-   JobContacts().insert({
-     name: req.body.name,
-     title: req.body.title,
-     phone: req.body.phone,
-     email: req.body.email,
-     job_application_id: req.params.id
-   },"id").then(function(ids){
-    res.json({id:ids[0]});
+router.post('/:id/contact', function(req, res, next) {
+  JobContacts().where('id', req.user.id).insert({
+    name: req.body.name,
+    title: req.body.title,
+    phone: req.body.phone,
+    email: req.body.email,
+    job_application_id: req.params.id
+  }, "id").then(function(ids) {
+    res.json({
+      id: ids[0]
+    });
   });
 });
 
-router.post('/:id/activity', function(req, res, next){
+router.post('/:id/activity', function(req, res, next) {
   console.log('hi from', req.body);
-   JobActivity().insert({
-     type: req.body.type,
-     description: req.body.description,
-     date: req.body.date,
-     job_application_id: req.params.id
-   },"id").then(function(ids){
-    res.json({id:ids[0]});
+  JobActivity().where('id', req.user.id).insert({
+    type: req.body.type,
+    description: req.body.description,
+    date: req.body.date,
+    job_application_id: req.params.id
+  }, "id").then(function(ids) {
+    res.json({
+      id: ids[0]
+    });
   });
 });
 
 router.delete('/:id/delete', function(req, res, next) {
-  // var id = req.params.id;
-  JobApplication().remove({ id: req.params.id }).first().del().then(function(){
-    res.json({id:ids[0]});
+  JobApplication().where('id', req.user.id).remove({
+    id: req.params.id
+  }).first().del().then(function() {
+    res.json({
+      id: ids[0]
+    });
 
   });
 });

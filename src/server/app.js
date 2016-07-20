@@ -8,7 +8,6 @@ var bodyParser = require('body-parser');
 var LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
 var passport = require('passport')
 var cookieSession = require('cookie-session');
-// var db  = require('db/db');
 var knex = require('../../db/knex')
 
 
@@ -17,14 +16,13 @@ require('dotenv').load()
 var indexRoutes = require('./routes/index.js');
 var authRoutes = require('./routes/auth.js');
 
-// *** express instance *** //
 var app = express();
 
-
-// *** config middleware *** //
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../client')));
 app.use(cookieSession({
@@ -35,90 +33,78 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-
-
-
-// http://localhost:3000/auth/linkedIn/callback
-
 passport.use(new LinkedInStrategy({
   clientID: process.env.LINKEDIN_CLIENT_ID,
   clientSecret: process.env.LINKEDIN_CLIENT_SECRET,
-  callbackURL:  process.env.HOST + "/auth/linkedin/callback",
+  callbackURL: process.env.HOST + "/auth/linkedin/callback",
   scope: ['r_emailaddress', 'r_basicprofile'],
-   state: true
+  state: true
 }, function(accessToken, refreshToken, profile, done) {
   knex('users')
-      .where({ linkedin_id: profile.id })
-      .orWhere({ email: profile.emails[0].value })
-      .first()
-      .then(function (user) {
-        if ( !user ) {
-          return knex('users').insert({
-            linkedin_id: profile.id,
-            email: profile.emails[0].value,
-            preferred_name: profile.name.givenName,
-            last_name: profile.name.familyName,
-            avatar_url: profile.photos[0].value
-          }, 'id').then(function (id) {
-            return done(null, id[0]);
-          });
-        } else {
-          return done(null, user.id);
-        }
-      });
-    }));
-
-
-    passport.serializeUser(function(user, done) {
-  // later this will be where you selectively send to the browser
-  // an identifier for your user, like their primary key from the
-  // database, or their ID from linkedin
-
-  done(null, user);
-});
-
-  //     });
-  // }));
-
-  // done(null, {id: profile.id, displayName: profile.displayName})
-  // process.nextTick(function () {
-    // To keep the example simple, the user's LinkedIn profile is returned to
-    // represent the logged-in user. In a typical application, you would want
-    // to associate the LinkedIn account with a user record in your database,
-    // and return that user instead.
-      // return done(null, profile);
-
-app.get('/auth/linkedin',
-  passport.authenticate('linkedin',
-  function(req, res){
-
-  }));
-  app.get('/auth/linkedin/callback', passport.authenticate('linkedin', {
-  successRedirect: '/',
-  failureRedirect: '/login'
+    .where({
+      linkedin_id: profile.id
+    })
+    .orWhere({
+      email: profile.emails[0].value
+    })
+    .first()
+    .then(function(user) {
+      if (!user) {
+        return knex('users').insert({
+          linkedin_id: profile.id,
+          email: profile.emails[0].value,
+          preferred_name: profile.name.givenName,
+          last_name: profile.name.familyName,
+          avatar_url: profile.photos[0].value
+        }, '*').then(function(users) {
+          return done(null, users[0]);
+        });
+      } else {
+        return done(null, user);
+      }
+    });
 }));
 
 
 passport.serializeUser(function(user, done) {
-  done(null, user);
+
+
+  done(null, user.id);
 });
 
-passport.deserializeUser(function(user, done) {
-  done(null, user)
+
+passport.deserializeUser(function(id, done) {
+  console.log('this is the user', id);
+  if (id) {
+    knex('users')
+      .where({
+        id: id
+      })
+      .first()
+      .then(function(user) {
+        (!user) ? done('ID  not found'): done(null, user);
+      })
+      .catch(function(err) {
+        done(err, null);
+      })
+  } else {
+    done('ID  not found');
+  }
+  //
 });
 
-app.use(function (req, res, next) {
-  res.locals.user = req.user
+app.use(function(req, res, next) {
+  res.locals.user = req.user;
+  console.log('the user is', req.user);
   next()
 })
+
+app.use('/auth', authRoutes);
 
 app.use('/api', require('./api'))
 
 
 
-
-
-// catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
@@ -126,10 +112,6 @@ app.use(function(req, res, next) {
 });
 
 
-
-
-// development error handler
-// will print stacktrace
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     console.log(err.status)
@@ -141,8 +123,6 @@ if (app.get('env') === 'development') {
   });
 }
 
-// production error handler
-// no stacktraces leaked to user
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.json({
