@@ -6,10 +6,6 @@ myApp.controller('ShowController',
       $scope.job = result.data;
     })
 
-
-
-
-
     $scope.addActivity = function() {
       var date= $('#date').val();
       console.log(date);
@@ -29,28 +25,3 @@ myApp.controller('ShowController',
 
 
   });
-
-// });
-
-// $scope.edit = function(routeparams) {
-//   console.log($routeParams.id);
-//   http.get('/api/jobs' + $routeParams.id).success(function(response){
-//
-//   })
-// };
-//
-
-// });
-
-
-
-
-//     $scope.remove = function($routeParams) {
-//       console.log($routeParams.id);
-//       $http.delete('/api/jobs' + $routeParams.id).success(function(response){
-//         refresh();
-//       });
-//     };
-//
-//
-//

@@ -92,6 +92,11 @@ router.delete('/:id/delete', function(req, res, next) {
   });
 });
 
+router.get('/logout', function(req, res, next){
+  req.session = null;
+  res.redirect('/');
+})
+
 
 
 

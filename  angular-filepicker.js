@@ -15,9 +15,7 @@ function filepickerDirective($rootScope, filepickerService, $parse){
         },
         link: function(scope, element, attrs) {
             var key, value;
-            /*
-                pass original event
-            */
+          
             element.bind('change', function(event) {
                 event.preventDefault();
                 scope.onSuccess({event: event.originalEvent || event});
